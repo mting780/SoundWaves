@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>SoundWaves</title>
+    <script src="libraries/p5.js" type="text/javascript"></script>
+
+    <script src="libraries/p5.dom.js" type="text/javascript"></script>
+    <script src="libraries/p5.sound.js" type="text/javascript"></script>
+
+    <script src="sketch.js" type="text/javascript"></script>
+
+    <style> 
+    body {padding: 0; margin: 0;} 
+    canvas {vertical-align: top;} 
+    #Finish {
+      float:right;
+    }
+    </style>
+  </head>
+
+  <body>
+      <button type="button" id="Finish" onclick="Call_Script()">Finish and Save (NEW)</button>
+  </body>
+  <script>
+      $('#Finish').click(function(){
+          $.ajax({
+            type: 'GET',
+            url: '../twitterbot.py',
+
+            success: function(response) {
+              console.log(response);
+            },
+            error: function(response) {
+              return console.error(response);
+            }
+          });
+
+      })
+  </script>
+</html>
