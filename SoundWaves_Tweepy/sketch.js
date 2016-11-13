@@ -10,7 +10,7 @@ var current;
 var info_screen;
 
 function setup() {
-  createCanvas(screen.width/2,screen.height);
+  createCanvas(screen.width,screen.height);
     mic = new p5.AudioIn();
   fft = new p5.FFT(0,1024);
   resetSketch();
@@ -79,7 +79,6 @@ function mapPermanent(arr,amp) {
 
 function drawLines(arr){
   midpoint = height * screen_divide;
-  // beginShape(POINTS);
   strokeWeight(2);
   for (var k = 0; k < permanent.length;k++){
     lineHeight = permanent[k];
@@ -89,9 +88,9 @@ function drawLines(arr){
     pt2 = midpoint-lineHeight_half;
     
     // wraparound(k,arr);
-    line_color = permanent_amp[k];
-    stroke(k,255,255);
-    line((k%width),pt1,(k%width),pt2);
+    x_pos = map(k,0,permanent.length,0,width)
+    stroke(k%permanent.length,255,255);
+    line((x_pos),pt1,(x_pos),pt2);
   }
 }
 
@@ -101,17 +100,17 @@ function keyPressed() {
   }
 }
 
-function wraparound(line_x,spectrum){
-  if (line_x == width) {
-    screen_divide+=1/20;
-    endShape();
-    return true;
-  }
-  if (screen_divide >= 1) {
-    screen_divide = 1/20;
-    save("output.png");
-    return;
+// function wraparound(line_x,spectrum){
+//   if (line_x == width) {
+//     screen_divide+=1/20;
+//     endShape();
+//     return true;
+//   }
+//   if (screen_divide >= 1) {
+//     screen_divide = 1/20;
+//     save("output.png");
+//     return;
 
-  }
-  return false;
-}
+//   }
+//   return false;
+// }

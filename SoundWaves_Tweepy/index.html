@@ -20,22 +20,8 @@
   </head>
 
   <body>
-      <button type="button" id="Finish" onclick="Call_Script()">Finish and Save (NEW)</button>
   </body>
   <script>
-      $('#Finish').click(function(){
-          $.ajax({
-            type: 'GET',
-            url: '../twitterbot.py',
-
-            success: function(response) {
-              console.log(response);
-            },
-            error: function(response) {
-              return console.error(response);
-            }
-          });
-
-      })
+      
   </script>
 </html>
