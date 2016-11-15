@@ -89,7 +89,7 @@ function drawLines(arr){
     
     // wraparound(k,arr);
     x_pos = map(k,0,permanent.length,0,width)
-    stroke(k%permanent.length,255,255);
+    stroke(permanent_vol[k]*255,255,255);
     line((x_pos),pt1,(x_pos),pt2);
   }
 }
